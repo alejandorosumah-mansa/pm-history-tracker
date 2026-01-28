@@ -1,0 +1,20 @@
+[package]
+name = "pm-cli"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "pm-cli"
+path = "src/main.rs"
+
+[dependencies]
+pm-shared = { path = "../shared" }
+
+tokio.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+clap.workspace = true
+colored.workspace = true
+fuzzy-matcher.workspace = true
+anyhow.workspace = true
