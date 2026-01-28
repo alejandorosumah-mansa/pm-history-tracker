@@ -33,11 +33,14 @@ curl "https://pm-history-api.onrender.com/api/markets/{id}/history?hours=24"
 
 **Features:**
 - ✅ No authentication required (public read-only)
-- ✅ 1000+ active markets
+- ✅ No database setup needed - just use the API!
+- ✅ 3800+ active markets
 - ✅ Real-time price updates every 5 minutes
 - ✅ Historical price snapshots
 - ✅ Full-text search
 - ✅ JSON responses
+
+> **Note**: You don't need to set up anything! Just use the API endpoints above. The database setup instructions below are only for developers who want to self-host their own instance.
 
 ---
 
@@ -84,7 +87,11 @@ curl "https://pm-history-api.onrender.com/api/markets/{id}/history?hours=24"
 └───────────────────────────────────────────────────────────────┘
 ```
 
-## Quick Start
+---
+
+## Self-Hosting Guide
+
+> **⚠️ For End Users**: You don't need to follow these steps! Just use the public API at `https://pm-history-api.onrender.com`. These instructions are only for developers who want to run their own instance.
 
 ### Prerequisites
 
