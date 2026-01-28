@@ -14,7 +14,9 @@ impl Config {
         let database_url = env::var("DATABASE_URL")
             .expect("DATABASE_URL must be set");
 
-        let port = env::var("API_PORT")
+        // Render provides PORT, fall back to API_PORT, then default to 3000
+        let port = env::var("PORT")
+            .or_else(|_| env::var("API_PORT"))
             .unwrap_or_else(|_| "3000".to_string())
             .parse()?;
 
