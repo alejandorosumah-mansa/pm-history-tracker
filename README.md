@@ -2,6 +2,45 @@
 
 A production-ready prediction market history tracking system with Neon PostgreSQL backend, Rust API/CLI, and Python visualization. Track price movements, volume, and liquidity across multiple prediction market platforms.
 
+[![API Status](https://img.shields.io/badge/API-Live-green)](https://pm-history-api.onrender.com/health)
+[![Markets](https://img.shields.io/badge/Markets-1000%2B-blue)](https://pm-history-api.onrender.com/api/markets)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## 🚀 Public API
+
+**Base URL**: `https://pm-history-api.onrender.com`
+
+Query 1000+ prediction markets from Polymarket and Kalshi with a simple REST API:
+
+```bash
+# Health check
+curl https://pm-history-api.onrender.com/health
+
+# Search markets
+curl "https://pm-history-api.onrender.com/api/search?q=election"
+
+# Get top markets by volume
+curl "https://pm-history-api.onrender.com/api/markets?limit=10&sort=volume"
+
+# Get market details
+curl "https://pm-history-api.onrender.com/api/markets/{id}"
+
+# Get price history
+curl "https://pm-history-api.onrender.com/api/markets/{id}/history?hours=24"
+```
+
+📖 **[Full API Documentation →](API_DOCUMENTATION.md)**
+
+**Features:**
+- ✅ No authentication required (public read-only)
+- ✅ 1000+ active markets
+- ✅ Real-time price updates every 5 minutes
+- ✅ Historical price snapshots
+- ✅ Full-text search
+- ✅ JSON responses
+
+---
+
 ## Credits
 
 **Original Project**: [pm-indexer by 0xqtpie](https://github.com/0xqtpie/pm-indexer)
