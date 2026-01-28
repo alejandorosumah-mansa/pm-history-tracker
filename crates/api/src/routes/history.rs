@@ -3,10 +3,9 @@ use axum::{
     Json,
 };
 use serde::Deserialize;
-use std::sync::Arc;
 use uuid::Uuid;
 
-use crate::{db::PriceHistoryRepository, error::ApiResult};
+use crate::{error::ApiResult, AppState};
 use pm_shared::PriceHistory;
 
 #[derive(Debug, Deserialize)]
@@ -21,11 +20,11 @@ fn default_limit() -> i64 {
 }
 
 pub async fn get_price_history(
-    State(repo): State<Arc<PriceHistoryRepository>>,
+    State(app_state): State<AppState>,
     Path(market_id): Path<Uuid>,
     Query(params): Query<HistoryQuery>,
 ) -> ApiResult<Json<Vec<PriceHistory>>> {
     let limit = params.limit.min(1000);
-    let history = repo.get_history(market_id, limit, params.hours).await?;
+    let history = app_state.history_repo.get_history(market_id, limit, params.hours).await?;
     Ok(Json(history))
 }

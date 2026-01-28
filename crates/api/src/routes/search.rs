@@ -3,9 +3,8 @@ use axum::{
     Json,
 };
 use serde::{Deserialize, Serialize};
-use std::sync::Arc;
 
-use crate::{db::MarketRepository, error::ApiResult};
+use crate::{error::ApiResult, AppState};
 use pm_shared::Market;
 
 #[derive(Debug, Deserialize)]
@@ -35,12 +34,12 @@ pub struct SearchResultItem {
 }
 
 pub async fn search_markets(
-    State(repo): State<Arc<MarketRepository>>,
+    State(app_state): State<AppState>,
     Query(params): Query<SearchQuery>,
 ) -> ApiResult<Json<SearchResponse>> {
     let limit = params.limit.min(100);
 
-    let results = repo
+    let results = app_state.market_repo
         .search(
             &params.q,
             limit,

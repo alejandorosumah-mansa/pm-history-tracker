@@ -1,0 +1,11 @@
+[2m2026-01-28T05:37:47.891810Z[0m [32m INFO[0m [2mpm_worker[0m[2m:[0m Starting PM History Tracker Worker
+[2m2026-01-28T05:37:47.891868Z[0m [32m INFO[0m [2mpm_worker[0m[2m:[0m Collection interval: 300s
+[2m2026-01-28T05:37:47.891873Z[0m [32m INFO[0m [2mpm_worker[0m[2m:[0m Tracked markets limit: 1000
+[2m2026-01-28T05:37:49.301574Z[0m [32m INFO[0m [2mpm_worker[0m[2m:[0m Connected to database
+[2m2026-01-28T05:37:49.303236Z[0m [32m INFO[0m [2mpm_worker::scheduler[0m[2m:[0m Starting scheduler with 300s interval, tracking 1000 markets
+[2m2026-01-28T05:37:49.304392Z[0m [32m INFO[0m [2mpm_worker::scheduler[0m[2m:[0m Starting collection cycle
+[2m2026-01-28T05:37:49.304403Z[0m [32m INFO[0m [2mpm_worker::collectors::polymarket[0m[2m:[0m Fetching markets from Polymarket: https://gamma-api.polymarket.com/markets?limit=500&active=true
+[2m2026-01-28T05:37:50.775143Z[0m [31mERROR[0m [2mpm_worker::scheduler[0m[2m:[0m Failed to fetch Polymarket markets: error decoding response body: invalid type: string "[\"Yes\", \"No\"]", expected a sequence at line 1 column 1304
+[2m2026-01-28T05:37:51.277263Z[0m [32m INFO[0m [2mpm_worker::collectors::kalshi[0m[2m:[0m Fetching markets from Kalshi: https://api.elections.kalshi.com/trade-api/v2/markets?limit=500&status=open
+[2m2026-01-28T05:37:52.997028Z[0m [32m INFO[0m [2mpm_worker::collectors::kalshi[0m[2m:[0m Fetched 500 markets from Kalshi
+[2m2026-01-28T05:37:52.997162Z[0m [32m INFO[0m [2mpm_worker::scheduler[0m[2m:[0m Collected 500 markets from Kalshi

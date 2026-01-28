@@ -3,10 +3,9 @@ use axum::{
     Json,
 };
 use serde::Deserialize;
-use std::sync::Arc;
 use uuid::Uuid;
 
-use crate::{db::MarketRepository, error::ApiResult};
+use crate::{error::ApiResult, AppState};
 use pm_shared::Market;
 
 #[derive(Debug, Deserialize)]
@@ -34,18 +33,18 @@ fn default_order() -> String {
 }
 
 pub async fn list_markets(
-    State(repo): State<Arc<MarketRepository>>,
+    State(app_state): State<AppState>,
     Query(params): Query<ListQuery>,
 ) -> ApiResult<Json<Vec<Market>>> {
     let limit = params.limit.min(100);
-    let markets = repo.list(limit, params.offset, &params.sort, &params.order).await?;
+    let markets = app_state.market_repo.list(limit, params.offset, &params.sort, &params.order).await?;
     Ok(Json(markets))
 }
 
 pub async fn get_market(
-    State(repo): State<Arc<MarketRepository>>,
+    State(app_state): State<AppState>,
     Path(id): Path<Uuid>,
 ) -> ApiResult<Json<Market>> {
-    let market = repo.get_by_id(id).await?;
+    let market = app_state.market_repo.get_by_id(id).await?;
     Ok(Json(market))
 }

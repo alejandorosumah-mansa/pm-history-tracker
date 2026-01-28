@@ -23,3 +23,4 @@ tracing.workspace = true
 tracing-subscriber.workspace = true
 dotenvy.workspace = true
 fuzzy-matcher.workspace = true
+uuid.workspace = true

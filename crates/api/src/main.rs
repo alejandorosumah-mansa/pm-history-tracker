@@ -15,6 +15,13 @@ use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 use config::Config;
 use db::{MarketRepository, PriceHistoryRepository};
 
+// Shared application state
+#[derive(Clone)]
+struct AppState {
+    market_repo: Arc<MarketRepository>,
+    history_repo: Arc<PriceHistoryRepository>,
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Initialize tracing
@@ -42,6 +49,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let market_repo = Arc::new(MarketRepository::new(pool.clone()));
     let history_repo = Arc::new(PriceHistoryRepository::new(pool.clone()));
 
+    // Create shared app state
+    let app_state = AppState {
+        market_repo,
+        history_repo,
+    };
+
     // Build router
     let app = Router::new()
         .route("/health", get(health_check))
@@ -49,8 +62,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .route("/api/markets", get(routes::markets::list_markets))
         .route("/api/markets/:id", get(routes::markets::get_market))
         .route("/api/markets/:id/history", get(routes::history::get_price_history))
-        .with_state(market_repo.clone())
-        .with_state(history_repo.clone())
+        .with_state(app_state)
         .layer(CorsLayer::permissive());
 
     // Start server
