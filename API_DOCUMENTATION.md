@@ -3,7 +3,7 @@
 > **Public read-only API for querying prediction market data from Polymarket and Kalshi**
 
 [![API Status](https://img.shields.io/badge/API-Live-green)](https://pm-history-api.onrender.com/health)
-[![Markets](https://img.shields.io/badge/Markets-1000%2B-blue)](https://pm-history-api.onrender.com/api/markets)
+[![Markets](https://img.shields.io/badge/Markets-3800%2B-blue)](https://pm-history-api.onrender.com/api/markets)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Base URL
@@ -273,7 +273,7 @@ If you need higher rate limits, please open an issue on GitHub.
 
 - **Markets**: Updated every 5 minutes
 - **Price History**: New snapshots every 5 minutes
-- **Database**: Contains 1000+ active markets
+- **Database**: Contains 3800+ active markets from Kalshi
 
 ---
 

@@ -3,7 +3,7 @@
 A production-ready prediction market history tracking system with Neon PostgreSQL backend, Rust API/CLI, and Python visualization. Track price movements, volume, and liquidity across multiple prediction market platforms.
 
 [![API Status](https://img.shields.io/badge/API-Live-green)](https://pm-history-api.onrender.com/health)
-[![Markets](https://img.shields.io/badge/Markets-1000%2B-blue)](https://pm-history-api.onrender.com/api/markets)
+[![Markets](https://img.shields.io/badge/Markets-3800%2B-blue)](https://pm-history-api.onrender.com/api/markets)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🚀 Public API
